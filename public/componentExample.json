@@ -1,0 +1,10 @@
+{
+    "type": "SD_HEADER_COMPONENT",
+    "tag": "408f6078-a97f-4ecd-8d2d-80cb9321b3ba",
+    "data": {
+        "title": "Ocorreu um erro",
+        "subtitle": "Não foi possível carregar as informações. Verifique sua conexão e tente novamente",
+        "isAvailable": false,
+        "value": 350
+    }
+}
