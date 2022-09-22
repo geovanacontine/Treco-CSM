@@ -8,14 +8,14 @@
     "body": [
         {
             "type" : "SD_SPACER_COMPONENT",
-            "tag" : "spacer1",
+            "id" : "408f6078-a97f-4ecd-8d2d-80cb9321b3ba",
             "data" : {
                 "vertical" : "lg"
             }
         },
         {
             "type": "SD_HEADER_COMPONENT",
-            "tag": "408f6078-a97f-4ecd-8d2d-80cb9321b3ba",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bb",
             "data": {
                 "title": "Ocorreu um erro",
                 "subtitle": "Não foi possível carregar as informações. Verifique sua conexão e tente novamente"
@@ -23,14 +23,14 @@
         },
         {
             "type" : "SD_SPACER_COMPONENT",
-            "tag" : "spacer2",
+            "id" : "408f6078-a97f-4ecd-8d2d-80cb9321b3bc",
             "data" : {
                 "vertical" : "lg"
             }
         },
         {
             "type": "SD_BUTTON_COMPONENT",
-            "tag": "tryAgainButton",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bd",
             "data": {
                 "icon": "arrow.clockwise",
                 "title": "Atualizar",

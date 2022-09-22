@@ -4,7 +4,6 @@ import {
   VStack,
   Spacer,
   Heading,
-  Text,
   Table,
   Thead,
   Tbody,
@@ -16,6 +15,7 @@ import {
   IconButton,
   Button,
   Input,
+  Badge,
 } from "@chakra-ui/react";
 import {
   ArrowUpIcon,
@@ -25,21 +25,59 @@ import {
 } from "@chakra-ui/icons";
 
 const ViewDetailPage = (props) => {
-  const { header, body } = props.view;
-  const [view, setView] = useState(props.view ?? {});
-
-  const didFinishEditingView = () => {
-    console.log(view);
-  };
-
-  const didFinishEditingComponent = (component) => {
-    console.log(component);
-  };
+  const { header } = props.view;
+  const view = props.view;
 
   const onChangeHeaderInput = (key, value) => {
     let temp = { ...view };
     temp.header[key] = value;
-    setView(temp);
+    props.didUpdateView(temp);
+  };
+
+  const onClickSaveButton = (e) => {
+    e.preventDefault();
+    props.didFinishEditingView(view);
+  };
+
+  const onClickEditComponent = (e, component) => {
+    e.preventDefault();
+    props.willEditComponent(component);
+  };
+
+  const onClickDeleteComponent = (e, componentId) => {
+    e.preventDefault();
+    let temp = { ...view };
+    let index = temp.body.findIndex((comp) => comp.id === componentId);
+    temp.body.splice(index, 1);
+    props.didUpdateView(temp);
+  };
+
+  const onClickMoveUpComponent = (e, component) => {
+    e.preventDefault();
+    let temp = { ...view };
+    let index = temp.body.findIndex((comp) => comp.id === component.id);
+
+    if (index !== 0) {
+      let indexAbove = index - 1;
+      let componentAbove = temp.body[indexAbove];
+      temp.body[indexAbove] = component;
+      temp.body[index] = componentAbove;
+      props.didUpdateView(temp);
+    }
+  };
+
+  const onClickMoveDownComponent = (e, component) => {
+    e.preventDefault();
+    let temp = { ...view };
+    let index = temp.body.findIndex((comp) => comp.id === component.id);
+
+    if (index < (temp.body.length - 1)) {
+      let indexBelow = index + 1;
+      let componentBelow = temp.body[indexBelow];
+      temp.body[indexBelow] = component;
+      temp.body[index] = componentBelow;
+      props.didUpdateView(temp);
+    }
   };
 
   return (
@@ -48,11 +86,16 @@ const ViewDetailPage = (props) => {
         <Flex w="100%" pb="60px">
           <VStack alignItems="start">
             <Heading size="lg">View Detail</Heading>
-            <Text fontSize="sm">{view?.metadata?.id ?? ""}</Text>
+            <Badge colorScheme="purple">{view?.metadata?.id ?? ""}</Badge>
           </VStack>
           <Spacer />
-          <Button colorScheme="purple" onClick={didFinishEditingView}>
-            Salvar
+          <Button
+            colorScheme="purple"
+            onClick={(e) => {
+              onClickSaveButton(e);
+            }}
+          >
+            Save
           </Button>
         </Flex>
 
@@ -91,18 +134,39 @@ const ViewDetailPage = (props) => {
               </Tr>
             </Thead>
             <Tbody>
-              {body?.map((component) => (
-                <Tr key={component.tag}>
+              {view.body?.map((component) => (
+                <Tr key={component.id}>
                   <Td w="100%">{component.type}</Td>
                   <Td>
                     <ButtonGroup variant="outline">
-                      <IconButton aria-label="edit" icon={<EditIcon />} />
-                      <IconButton aria-label="up" icon={<ArrowUpIcon />} />
-                      <IconButton aria-label="down" icon={<ArrowDownIcon />} />
+                      <IconButton
+                        aria-label="edit"
+                        icon={<EditIcon />}
+                        onClick={(e) => {
+                          onClickEditComponent(e, component);
+                        }}
+                      />
+                      <IconButton
+                        aria-label="up"
+                        icon={<ArrowUpIcon />}
+                        onClick={(e) => {
+                          onClickMoveUpComponent(e, component);
+                        }}
+                      />
+                      <IconButton
+                        aria-label="down"
+                        icon={<ArrowDownIcon />}
+                        onClick={(e) => {
+                          onClickMoveDownComponent(e, component);
+                        }}
+                      />
                       <IconButton
                         aria-label="down"
                         colorScheme="red"
                         icon={<DeleteIcon />}
+                        onClick={(e) => {
+                          onClickDeleteComponent(e, component.id);
+                        }}
                       />
                     </ButtonGroup>
                   </Td>

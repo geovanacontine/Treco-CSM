@@ -4,9 +4,9 @@ import {
   VStack,
   Spacer,
   Heading,
-  Text,
   Input,
   Badge,
+  ButtonGroup,
   Button,
   Switch,
   NumberInput,
@@ -26,7 +26,7 @@ import {
 } from "@chakra-ui/react";
 
 const ComponentDetailPage = (props) => {
-  const { type, tag } = props.component;
+  const { type } = props.component;
   const [data, setData] = useState(props.component.data ?? {});
 
   const onChangeInput = (key, value) => {
@@ -41,19 +41,25 @@ const ComponentDetailPage = (props) => {
     props.didFinishEditingComponent(modifiedComponent);
   };
 
+  const onClickCancelButton = () => {
+    props.didFinishEditingComponent(props.component);
+  };
+
   return (
     <Flex minWidth="max-content">
       <VStack p="48px" w="100%" alignItems="start">
         <Flex w="100%" pb="60px">
           <VStack alignItems="start">
             <Heading size="lg">Component Detail</Heading>
-            <Text fontSize="sm">{tag}</Text>
             <Badge colorScheme="purple">{type}</Badge>
           </VStack>
           <Spacer />
-          <Button colorScheme="purple" onClick={onClickSaveButton}>
-            Salvar
-          </Button>
+          <ButtonGroup>
+            <Button onClick={onClickCancelButton}>Cancel</Button>
+            <Button colorScheme="purple" onClick={onClickSaveButton}>
+              Save
+            </Button>
+          </ButtonGroup>
         </Flex>
 
         <TableContainer w="100%">
@@ -117,7 +123,7 @@ const ComponentDetailPage = (props) => {
       return (
         <HStack>
           <NumberInput
-            w='100%'
+            w="100%"
             value={currentValue ?? 0}
             isDisabled={currentValue === null}
             min={0}
