@@ -1,0 +1,28 @@
+{
+    "components": [
+        {
+            "type" : "SPACER",
+            "id" : "",
+            "data" : {
+                "vertical" : "xs"
+            }
+        },
+        {
+            "type": "HEADER",
+            "id": "",
+            "data": {
+                "title": "title",
+                "subtitle": "subtitle"
+            }
+        },
+        {
+            "type": "BUTTON",
+            "id": "",
+            "data": {
+                "icon": "icon",
+                "title": "title",
+                "style": "style"
+            }
+        }
+    ]
+}

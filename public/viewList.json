@@ -1,0 +1,24 @@
+{
+    "views": [
+        {
+            "name": "Home 1",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3ba"
+        },
+        {
+            "name": "Home 2",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bb"
+        },
+        {
+            "name": "Home 3",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bc"
+        },
+        {
+            "name": "Home 4",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bd"
+        },
+        {
+            "name": "Home 5",
+            "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3be"
+        }
+    ]
+}

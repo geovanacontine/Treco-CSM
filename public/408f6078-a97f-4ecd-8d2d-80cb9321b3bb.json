@@ -8,14 +8,14 @@
     },
     "body": [
         {
-            "type" : "SD_SPACER_COMPONENT",
+            "type" : "SPACER",
             "id" : "408f6078-a97f-4ecd-8d2d-80cb9321b3ba",
             "data" : {
                 "vertical" : "lg"
             }
         },
         {
-            "type": "SD_HEADER_COMPONENT",
+            "type": "HEADER",
             "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bb",
             "data": {
                 "title": "Ocorreu um erro",
@@ -23,14 +23,14 @@
             }
         },
         {
-            "type" : "SD_SPACER_COMPONENT",
+            "type" : "SPACER",
             "id" : "408f6078-a97f-4ecd-8d2d-80cb9321b3bc",
             "data" : {
                 "vertical" : "lg"
             }
         },
         {
-            "type": "SD_BUTTON_COMPONENT",
+            "type": "BUTTON",
             "id": "408f6078-a97f-4ecd-8d2d-80cb9321b3bd",
             "data": {
                 "icon": "arrow.clockwise",
